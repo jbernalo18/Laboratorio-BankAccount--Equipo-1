@@ -2,7 +2,7 @@ public abstract class CuentaBancaria {
 
     private String numeroCuenta;
     private String titular;
-    protected double saldo;
+    private double saldo;
     private double tasaInteres;
 
     public CuentaBancaria(String numeroCuenta, String titular, double saldoInicial, double tasaInteres) {
@@ -34,6 +34,12 @@ public abstract class CuentaBancaria {
 
     public double getTasaInteres() {
         return tasaInteres;
+    }
+
+    protected void reducirSaldo(double monto) {
+        if (monto > 0) {
+            this.saldo -= monto;
+        }
     }
 
     public void depositar(double monto) {
