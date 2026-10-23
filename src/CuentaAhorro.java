@@ -8,14 +8,15 @@ public class CuentaAhorro extends CuentaBancaria {
     this.fechaApertura=fechaApertura;
 
     if(saldoInicial<10000){
-        throw new IllegalArgumentException("El saldo mínímo es insuficiente");
+        throw new IllegalArgumentException("El saldo mínímo es insuficiente. Retiro minimo: $10.000");
     }
     }
     //sobreescritura metodo reitrar
     @Override
     public void retirar(double monto){
         if(saldo<monto){
-            System.out.println("Saldo insuficiente");
+                    System.out.println("Saldo insuficiente. Está intentando retirar: $"+monto);
+                    System.out.println("Y su saldo actual es: $"+saldo);
         }else {
             saldo=saldo-monto;
             System.out.println("Retiro exitoso, su nuevo saldo es: $"+String.format("%.2f", saldo));
