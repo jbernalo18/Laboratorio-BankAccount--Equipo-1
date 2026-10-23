@@ -6,22 +6,17 @@ public abstract class CuentaBancaria {
     private double tasaInteres;
 
     public CuentaBancaria(String numeroCuenta, String titular, double saldoInicial, double tasaInteres) {
-        this.numeroCuenta = numeroCuenta;
-        this.titular = titular;
 
         if (saldoInicial < 0) {
-            System.out.println("El saldo no puede ser negativo.");
-            this.saldo = 0;
-        } else {
-            this.saldo = saldoInicial;
+            throw new IllegalArgumentException("El saldo no puede ser negativo.");
         }
-
         if (tasaInteres < 0) {
-            System.out.println("La tasa de interes no puede ser negativo.");
-            this.tasaInteres = 0;
-        } else {
-            this.tasaInteres = tasaInteres;
+            throw new IllegalArgumentException("La tasa de interes no puede ser negativa.");
         }
+        this.numeroCuenta = numeroCuenta;
+        this.titular = titular;
+        this.saldo = saldoInicial;
+        this.tasaInteres = tasaInteres;
 
     }
 
