@@ -30,22 +30,22 @@ public class CuentaCorriente extends CuentaBancaria {
             System.out.println("Error: el monto a retirar debe ser positivo.");
             return;
         }
-        if (monto > saldo + limiteSobregiro) {
+        if (monto > getSaldo() + limiteSobregiro) {
             System.out.println("Error: saldo insuficiente. Supera el limite de sobregiro.");
             return;
         }
 
-        saldo = saldo - monto;
+        reducirSaldo(monto);
         System.out.println("Retiro exitoso");
 
-        if (saldo < 0) {
-            double montoSobregirado = -saldo;
+        if (getSaldo() < 0) {
+            double montoSobregirado = -getSaldo();
             double comision = montoSobregirado * porcentajeComisionSobregiro / 100;
-            saldo = saldo - comision;
+            reducirSaldo(comision);
             System.out.printf("Comision por sobregiro: $%.2f%n", comision);
         }
 
-        System.out.printf("Nuevo saldo: $%.2f%n", saldo);
+        System.out.printf("Nuevo saldo: $%.2f%n", getSaldo());
     }
 
     @Override
