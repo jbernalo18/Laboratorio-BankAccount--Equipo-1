@@ -16,16 +16,15 @@ public class CuentaEmpresarial extends CuentaBancaria {
 
     @Override
     public void retirar(double monto) {
-        if (monto + comisionRetiro > saldo) {
+        if (monto + comisionRetiro > getSaldo()) {
             System.out.println("Error: saldo insuficiente para retirar $" + monto
                     + " mas la comision de $" + comisionRetiro);
             return;
         }
-        saldo = saldo - monto;
-        saldo = saldo - comisionRetiro;
+        reducirSaldo(monto + comisionRetiro);
         System.out.println("Retiro exitoso");
         System.out.println("Comision por retiro: $" + comisionRetiro);
-        System.out.println("Nuevo saldo: $" + saldo);
+        System.out.println("Nuevo saldo: $" + getSaldo());
     }
 
     @Override

@@ -14,12 +14,12 @@ public class CuentaAhorro extends CuentaBancaria {
     //sobreescritura metodo reitrar
     @Override
     public void retirar(double monto){
-        if(saldo<monto){
+        if(getSaldo()<monto){
                     System.out.println("Saldo insuficiente. Está intentando retirar: $"+monto);
-                    System.out.println("Y su saldo actual es: $"+saldo);
+                    System.out.println("Y su saldo actual es: $"+getSaldo());
         }else {
-            saldo=saldo-monto;
-            System.out.println("Retiro exitoso, su nuevo saldo es: $"+String.format("%.2f", saldo));
+            reducirSaldo(monto);
+            System.out.println("Retiro exitoso, su nuevo saldo es: $"+String.format("%.2f", getSaldo()));
         }
     }
 
