@@ -7,7 +7,7 @@ public class CuentaAhorro extends CuentaBancaria {
     super(numeroCuenta,titular,saldoInicial,tasaInteres);
     this.fechaApertura=fechaApertura;
     }
-
+    //sobreescritura metodo reitrar
     @Override
     public void retirar(double monto){
         if(saldo>monto){
@@ -16,6 +16,12 @@ public class CuentaAhorro extends CuentaBancaria {
             saldo=saldo-monto;
             System.out.println("Retiro exitoso, su nuevo saldo es: "+ saldo);
         }
+    }
+
+    //sobrescritura mostrar info
+    @Override
+    public void mostrarInfo(){
+
     }
 
 }
